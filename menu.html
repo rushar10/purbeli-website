@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu – Purbeli</title>
+<meta name="description" content="Purbeli – Flavour on Wheels. Nepalese momo, chowmein, laphing, chatpate and more at 33 Glenroy Road, Glenroy VIC. Order online for pickup.">
+<link rel="icon" href="img/purbeli-logo-cream.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#140C0B}
+a{color:#F3E7DC}a:hover{color:#D99A35}
+.mn *{box-sizing:border-box}
+.mn input,.mn textarea,.mn button{font:inherit}
+.mn input:focus-visible,.mn textarea:focus-visible,.mn button:focus-visible,.mn a:focus-visible{outline:2px solid #D99A35;outline-offset:2px}
+.mn .card{transition:transform .2s ease, box-shadow .2s ease}
+.mn .card:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(0,0,0,.45);border-color:#6B3A33}
+.mn .plate{transition:transform .35s ease}
+.mn .card:hover .plate{transform:rotate(-8deg) scale(1.04)}
+.mn .mbar{display:none}
+@media (max-width:900px){.mn .mbar{display:flex}}
+@media (max-width:520px){.mn .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.mn .plate{width:112px!important;height:112px!important}.mn .card{padding:14px 10px 12px!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="dc-template">
+
+<div class="mn" style="background: #140C0B; color: #F3E7DC; font-family: Manrope, system-ui, sans-serif; font-size: 15px; line-height: 1.55; min-height: 100vh">
+<sc-if value="{{hasNotice}}" hint-placeholder-val="{{false}}">
+<div role="status" style="{{noticeStyle}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg><span>{{noticeText}}</span></div>
+</sc-if>
+
+<header style="background: #140C0B; border-bottom: 1px solid #2A1916">
+<div style="max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="index.html" aria-label="Purbeli home" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<img src="img/purbeli-logo-cream.png" alt="Purbeli logo" style="display: block; width: 64px; height: 55px; object-fit: contain">
+<span style="display: flex; flex-direction: column; line-height: 1.2">
+<span style="font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #BFA99B">Flavour on Wheels</span>
+<span style="font-family: 'Playfair Display', serif; font-size: 20px; color: #F3E7DC">Purbeli</span>
+</span>
+</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px; font-size: 14px; font-weight: 500">
+<a href="index.html" style="text-decoration: none; color: #F3E7DC">Home</a>
+<a href="menu.html" aria-current="page" style="text-decoration: none; color: #D99A35; font-weight: 700">Menu</a>
+<a href="order.html" style="text-decoration: none; color: #F3E7DC">My order</a>
+<a href="cart.html" aria-label="{{cartLabel}}" style="position: relative; display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: #9E2F2A; color: #FFF8EF; text-decoration: none">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"></path><circle cx="10" cy="20" r="1.4"></circle><circle cx="17" cy="20" r="1.4"></circle></svg>
+<span style="position: absolute; top: -4px; right: -4px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: #D99A35; color: #F3E7DC; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 2px solid #140C0B">{{count}}</span>
+</a>
+</nav>
+</div>
+</header>
+
+<div style="max-width: 1280px; margin: 0 auto; padding: 24px 16px 110px; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 28px">
+
+<main style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+
+<section aria-label="Must try" style="border-radius: 20px; background: #8E2B27; border: 1px solid #B4473E; color: #FFF8EF; padding: 24px 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; overflow: hidden; position: relative">
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 420px">
+<span style="align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; background: #F2C230; color: #F3E7DC; padding: 4px 12px; border-radius: 999px; transform: rotate(-3deg)">Must try</span>
+<h1 style="margin: 0; font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.4vw, 40px); font-weight: 400; line-height: 1.1">Jhapali <em>Chatpate</em></h1>
+<p style="margin: 0; font-size: 14px; color: #F6D9CF">Gilo or Sukkha — Jhapa-style spicy, tangy chatpate. From $9.99.</p>
+<button type="button" onClick="{{openMust}}" style="align-self: flex-start; min-height: 40px; padding: 0 22px; border-radius: 999px; border: 0; background: #FFF8EF; color: #8E2B27; font-size: 13px; font-weight: 700; cursor: pointer">Order now</button>
+</div>
+<img src="img/cut-gilo.webp" alt="Jhapali Gilo Chatpate" style="display: block; width: 200px; height: 200px; object-fit: contain; margin: -30px 0; filter: drop-shadow(0 14px 18px rgba(0,0,0,.5))">
+</section>
+
+<sc-if value="{{showSpecials}}" hint-placeholder-val="{{true}}">
+<section aria-labelledby="sp-h" style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; gap: 12px">
+<h2 id="sp-h" style="margin: 0; font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 400">Today’s <em style="color: #D99A35">specials</em></h2>
+<span style="font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #9C8678">Limited time</span>
+</div>
+<div style="display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px">
+<article style="flex: 0 0 280px; scroll-snap-align: start; position: relative; border-radius: 20px; background: #22140F; border: 1px solid #6B3A33; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="position: absolute; top: 14px; left: 14px; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: #D99A35; color: #1A0F0D">Special</span>
+<div style="height: 150px; border-radius: 14px; border: 2px dashed #6B3A33; background: #2A1916; display: flex; align-items: center; justify-content: center; color: #9C8678; font-size: 12px">Special photo</div>
+<h3 style="margin: 0; font-size: 17px; font-weight: 800; text-transform: uppercase">[Special name]</h3>
+<p style="margin: -4px 0 0; font-size: 13px; color: #BFA99B">[Short description]</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 11px; font-weight: 800">
+<span style="padding: 3px 9px; border-radius: 999px; border: 1px solid #3A211D; color: #F3E7DC">Today only</span>
+<span style="padding: 3px 9px; border-radius: 999px; background: #3A1512; color: #F6D9CF">Only [n] left</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto">
+<strong style="font-size: 18px; color: #D99A35">[Price]</strong>
+<button type="button" disabled="{{cantOrder}}" style="min-height: 40px; padding: 0 18px; border-radius: 999px; border: 0; background: #9E2F2A; color: #FFF8EF; font-size: 13px; font-weight: 700; cursor: pointer">Add To Cart</button>
+</div>
+</article>
+<article style="flex: 0 0 280px; scroll-snap-align: start; position: relative; border-radius: 20px; background: #22140F; border: 1px solid #6B3A33; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="position: absolute; top: 14px; left: 14px; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: #D99A35; color: #1A0F0D">Special</span>
+<div style="height: 150px; border-radius: 14px; border: 2px dashed #6B3A33; background: #2A1916; display: flex; align-items: center; justify-content: center; color: #9C8678; font-size: 12px">Special photo</div>
+<h3 style="margin: 0; font-size: 17px; font-weight: 800; text-transform: uppercase">[Special name]</h3>
+<p style="margin: -4px 0 0; font-size: 13px; color: #BFA99B">[Short description]</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 11px; font-weight: 800">
+<span style="padding: 3px 9px; border-radius: 999px; border: 1px solid #3A211D; color: #F3E7DC">Fri – Sun</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto">
+<strong style="font-size: 18px; color: #D99A35">[Price]</strong>
+<button type="button" disabled="{{cantOrder}}" style="min-height: 40px; padding: 0 18px; border-radius: 999px; border: 0; background: #9E2F2A; color: #FFF8EF; font-size: 13px; font-weight: 700; cursor: pointer">Add To Cart</button>
+</div>
+</article>
+</div>
+</section>
+</sc-if>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 400">The <em style="color: #E07A6A">menu</em></h2>
+<label style="flex: 0 1 320px; display: flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 16px; border-radius: 999px; background: #1E1210; border: 1px solid #3A211D">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BFA99B" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search the menu</span>
+<input type="search" placeholder="Search dishes" onInput="{{onSearch}}" style="flex: 1; min-width: 0; border: 0; background: none; color: #F3E7DC; outline-offset: 6px">
+</label>
+</div>
+
+<div role="group" aria-label="Categories" style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="7">
+<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="{{c.style}}">{{c.label}}</button>
+</sc-for>
+</div>
+
+<div class="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 18px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="8">
+<article class="card" style="position: relative; background: #1E1210; border: 1px solid #2E1B17; border-radius: 18px; box-shadow: 0 4px 14px rgba(0,0,0,.35); padding: 18px 16px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<sc-if value="{{it.must}}" hint-placeholder-val="{{false}}"><span style="position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: #F2C230; color: #1A0F0D; padding: 3px 9px; border-radius: 999px">Must try</span></sc-if>
+<button type="button" onClick="{{it.open}}" aria-label="{{it.viewLabel}}" style="padding: 0; border: 0; background: none; cursor: pointer; border-radius: 50%">
+<sc-if value="{{it.hasImg}}" hint-placeholder-val="{{true}}"><img class="plate" src="{{it.img}}" alt="" style="display: block; width: 150px; height: 150px; object-fit: contain; filter: drop-shadow(0 10px 14px rgba(0,0,0,.55))"></sc-if>
+<sc-if value="{{it.noImg}}" hint-placeholder-val="{{false}}"><span class="plate" style="width: 150px; height: 150px; border-radius: 50%; background: #2A1916; border: 2px dashed #6B3A33; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #9C8678; font-size: 11px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10"></path><path d="M17 3c-1.7 0-3 2-3 5s1.3 4 3 4v9"></path></svg>Photo coming soon</span></sc-if>
+</button>
+<span style="font-size: 11px; color: #9C8678; text-transform: uppercase; letter-spacing: .08em">{{it.catLabel}}</span>
+<h3 style="margin: -6px 0 0; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .02em">{{it.name}}</h3>
+<p style="margin: -4px 0 0; font-size: 12px; line-height: 1.45; color: #BFA99B; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 35px">{{it.desc}}</p>
+<span style="font-size: 16px; font-weight: 800; color: #D99A35">{{it.priceText}}</span>
+<sc-if value="{{it.showAdd}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{it.add}}" aria-label="{{it.addLabel}}" style="min-height: 38px; padding: 0 22px; border-radius: 999px; border: 0; background: #9E2F2A; color: #FFF8EF; font-size: 13px; font-weight: 600; cursor: pointer">Add To Cart</button>
+</sc-if>
+<sc-if value="{{it.locked}}" hint-placeholder-val="{{false}}"><span style="min-height: 38px; padding: 0 16px; border-radius: 999px; border: 1px dashed #6B3A33; color: #9C8678; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center">Ordering paused</span></sc-if>
+<sc-if value="{{it.showStep}}" hint-placeholder-val="{{false}}">
+<div style="display: inline-flex; align-items: center; gap: 4px; padding: 3px; border-radius: 999px; background: #2A1916">
+<button type="button" onClick="{{it.dec}}" aria-label="{{it.decLabel}}" style="width: 36px; height: 36px; border-radius: 50%; border: 0; background: #3A211D; color: #F3E7DC; font-size: 18px; font-weight: 700; cursor: pointer">−</button>
+<span aria-live="polite" style="min-width: 28px; font-weight: 700">{{it.qty}}</span>
+<button type="button" onClick="{{it.add}}" aria-label="{{it.addLabel}}" style="width: 36px; height: 36px; border-radius: 50%; border: 0; background: #9E2F2A; color: #FFF8EF; font-size: 18px; font-weight: 700; cursor: pointer">+</button>
+</div>
+</sc-if>
+</article>
+</sc-for>
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<p style="grid-column: 1 / -1; margin: 0; padding: 40px; border-radius: 18px; background: #1E1210; text-align: center; color: #BFA99B">No dishes match your search.</p>
+</sc-if>
+</div>
+</main>
+
+<aside aria-label="Your order" style="flex: 1 1 320px; min-width: 0; background: #1E1210; border: 1px solid #2E1B17; border-radius: 20px; box-shadow: 0 4px 14px rgba(0,0,0,.35); padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 400; text-align: center">Your order</h2>
+<sc-if value="{{noLines}}" hint-placeholder-val="{{false}}">
+<p style="margin: 0; padding: 24px 12px; text-align: center; color: #BFA99B; font-size: 14px">Your cart is empty. Tap “Add To Cart” on a dish.</p>
+</sc-if>
+<sc-for list="{{lines}}" as="ln" hint-placeholder-count="2">
+<div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 14px; background: #140C0B">
+<sc-if value="{{ln.hasImg}}" hint-placeholder-val="{{true}}"><img src="{{ln.img}}" alt="" style="display: block; width: 56px; height: 56px; object-fit: contain; flex: 0 0 auto"></sc-if>
+<sc-if value="{{ln.noImg}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="width: 56px; height: 56px; border-radius: 50%; background: #2A1916; border: 1px dashed #6B3A33; flex: 0 0 auto"></span></sc-if>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; font-weight: 700; text-transform: uppercase">{{ln.name}}</span>
+<sc-if value="{{ln.hasOpt}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; color: #BFA99B">{{ln.opt}}</span></sc-if>
+<span style="font-size: 13px; font-weight: 700; color: #D99A35">{{ln.lineTotal}}</span>
+</div>
+<div style="display: inline-flex; align-items: center; gap: 2px">
+<button type="button" onClick="{{ln.dec}}" aria-label="{{ln.decLabel}}" style="width: 30px; height: 30px; border-radius: 50%; border: 0; background: #3A211D; color: #F3E7DC; font-weight: 700; cursor: pointer">−</button>
+<span style="min-width: 24px; text-align: center; font-weight: 700; font-size: 14px">{{ln.qty}}</span>
+<button type="button" onClick="{{ln.inc}}" aria-label="{{ln.incLabel}}" style="width: 30px; height: 30px; border-radius: 50%; border: 0; background: #D99A35; color: #1A0F0D; font-weight: 700; cursor: pointer">+</button>
+</div>
+</div>
+</sc-for>
+<div style="border-radius: 14px; background: #140C0B; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; font-size: 14px">
+<span style="font-weight: 700; margin-bottom: 4px">Order details</span>
+<div style="display: flex; justify-content: space-between; color: #BFA99B"><span>Subtotal</span><span>{{subtotal}}</span></div>
+<div style="display: flex; justify-content: space-between; color: #BFA99B"><span>Pickup</span><span>Free</span></div>
+<div style="display: flex; justify-content: space-between; padding-top: 8px; margin-top: 4px; border-top: 1px solid #3A211D; font-weight: 700"><span>Total</span><span>{{total}}</span></div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: flex; flex-direction: column; line-height: 1.2"><span style="font-size: 12px; color: #BFA99B">{{count}} items</span><strong style="font-size: 20px">{{total}}</strong></span>
+<sc-if value="{{canOrder}}" hint-placeholder-val="{{true}}"><a href="checkout.html" style="flex: 1; max-width: 180px; display: inline-flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 12px; background: #9E2F2A; color: #FFF8EF; text-decoration: none; font-weight: 600">Checkout</a></sc-if><sc-if value="{{cantOrder}}" hint-placeholder-val="{{false}}"><span aria-disabled="true" style="flex: 1; max-width: 180px; display: inline-flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 12px; background: #2A1916; color: #9C8678; font-weight: 600">Ordering paused</span></sc-if>
+</div>
+<p style="margin: 0; text-align: center; font-size: 12px; color: #BFA99B">{{orderNote}}</p>
+</aside>
+</div>
+
+<sc-if value="{{showBar}}" hint-placeholder-val="{{false}}">
+<a class="mbar" href="cart.html" style="position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 15; min-height: 58px; padding: 0 10px 0 18px; border-radius: 16px; background: #9E2F2A; color: #FFF8EF; text-decoration: none; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.6)">
+<span style="display: flex; flex-direction: column; line-height: 1.2"><span style="font-size: 12px; color: #F6D9CF">{{count}} items</span><strong style="font-size: 18px">{{total}}</strong></span>
+<span style="min-height: 42px; padding: 0 18px; border-radius: 12px; background: #FFF8EF; color: #8E2B27; font-weight: 800; display: inline-flex; align-items: center">View cart</span>
+</a>
+</sc-if>
+<sc-if value="{{hasSel}}" hint-placeholder-val="{{false}}">
+<div role="dialog" aria-modal="true" aria-label="{{sel.name}}" style="position: fixed; inset: 0; z-index: 20; background: rgba(0,0,0,.65); display: flex; align-items: center; justify-content: center; padding: 16px">
+<form onSubmit="{{addSel}}" style="width: 100%; max-width: 880px; max-height: calc(100vh - 32px); overflow: auto; background: #140C0B; border-radius: 24px; display: flex; flex-wrap: wrap">
+<div style="flex: 1 1 320px; min-height: 280px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; position: relative">
+<button type="button" onClick="{{closeSel}}" aria-label="Back to menu" style="position: absolute; left: 16px; top: 16px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #1E1210; color: #F3E7DC; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<sc-if value="{{sel.hasImg}}" hint-placeholder-val="{{true}}"><img src="{{sel.img}}" alt="{{sel.name}}" style="display: block; width: 280px; height: 280px; object-fit: contain; filter: drop-shadow(0 18px 22px rgba(0,0,0,.6))"></sc-if>
+<sc-if value="{{sel.noImg}}" hint-placeholder-val="{{false}}"><span style="width: 240px; height: 240px; border-radius: 50%; background: #2A1916; border: 2px dashed #6B3A33; display: flex; align-items: center; justify-content: center; color: #9C8678; font-size: 13px">Photo coming soon</span></sc-if>
+</div>
+<div style="flex: 1 1 360px; min-width: 0; background: #1E1210; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 26px; font-weight: 800; text-transform: uppercase">{{sel.name}}</h2>
+<p style="margin: 0; font-size: 14px; color: #BFA99B">{{sel.desc}}</p>
+<sc-for list="{{sel.groups}}" as="g" hint-placeholder-count="1">
+<div role="group" aria-label="{{g.name}}" style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 700">{{g.name}}</span>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{g.choices}}" as="o" hint-placeholder-count="2">
+<button type="button" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="{{o.style}}">{{o.label}}</button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Special instructions
+<textarea rows="2" placeholder="e.g. sauce on the side" style="padding: 10px 14px; border-radius: 12px; border: 1px solid #3A211D; background: #140C0B; color: #F3E7DC; font-weight: 400; resize: vertical"></textarea></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Allergies
+<textarea rows="2" placeholder="Tell the kitchen about any allergies" style="padding: 10px 14px; border-radius: 12px; border: 1px solid #3A211D; background: #140C0B; color: #F3E7DC; font-weight: 400; resize: vertical"></textarea></label>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-top: 4px">
+<span style="display: flex; flex-direction: column; line-height: 1.2"><span style="font-size: 12px; color: #BFA99B">Price</span><strong style="font-size: 22px; color: #D99A35">{{sel.priceText}}</strong></span>
+<div style="display: inline-flex; align-items: center; gap: 4px; padding: 3px; border-radius: 999px; background: #2A1916">
+<button type="button" onClick="{{selDec}}" aria-label="Decrease quantity" style="width: 40px; height: 40px; border-radius: 50%; border: 0; background: #3A211D; color: #F3E7DC; font-size: 18px; font-weight: 700; cursor: pointer">−</button>
+<span aria-live="polite" style="min-width: 30px; text-align: center; font-weight: 700">{{selQty}}</span>
+<button type="button" onClick="{{selInc}}" aria-label="Increase quantity" style="width: 40px; height: 40px; border-radius: 50%; border: 0; background: #9E2F2A; color: #FFF8EF; font-size: 18px; font-weight: 700; cursor: pointer">+</button>
+</div>
+</div>
+<button type="submit" disabled="{{cantOrder}}" style="{{submitStyle}}">{{submitText}}</button>
+</div>
+</form>
+</div>
+</sc-if>
+</div>
+</template>
+<script type="text/x-dc" id="dc-script" data-props='{"notice":{"editor":"enum","options":["none","moved","closed"],"default":"none"},"ordering":{"editor":"enum","options":["open","paused"],"default":"open"},"specials":{"editor":"enum","options":["shown","none"],"default":"shown"},"$preview":{"width":1440,"height":2100}}'>
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var st = this.state || {};
+var fmt = function (n) { return '$' + n.toFixed(2); };
+var notice = this.props.notice ?? 'none';
+var NOTICE = { moved: ['This weekend we’ve moved: pickup is at [temporary address]. Back at 33 Glenroy Road on Monday.', '#D99A35', '#1A0F0D'], closed: ['Purbeli is closed today — back tomorrow. Online ordering is paused.', '#8E2B27', '#FFF8EF'] };
+var ordering = this.props.ordering ?? 'open';
+var canOrder = notice !== 'closed' && ordering !== 'paused';
+var nz = NOTICE[notice] || (ordering === 'paused' ? ['We’re not taking online orders right now — the kitchen is flat out. You can still browse the menu.', '#2A1916', '#F3E7DC'] : null);
+var qty = st.qty || { 'mo|0|0': 2, 'pp': 1 };
+var cat = st.cat || 'all';
+var q = (st.q || '').toLowerCase();
+var CATS = { momo: 'Momo', chow: 'Chowmein', fav: 'Favourites', lap: 'Laphing', jha: 'Jhapali Chatpate', kee: 'Keema Noodles', kids: 'Kids', drinks: 'Drinks' };
+var FILL = function (extra) { return { name: 'Filling', choices: [{ l: 'Chicken', p: extra }, { l: 'Veg', p: 0 }] }; };
+var base = [
+{ id: 'mo', name: 'Momo', cat: 'momo', price: 13.99, img: 'img/cut-momo.webp', desc: 'Nepalese dumplings served steamed, fried or jhol (soup).', groups: [FILL(1), { name: 'Style', choices: [{ l: 'Steamed', p: 0 }, { l: 'Fried', p: 0 }, { l: 'Jhol (soup)', p: 0 }] }] },
+{ id: 'ch', name: 'Chowmein', cat: 'chow', price: 12.99, img: 'img/cut-chowmein.webp', desc: 'Nepali-style stir-fried noodles with vegetables and soy sauce.', groups: [FILL(2)] },
+{ id: 'dn', name: 'Dharane Aalu Nimki', cat: 'fav', price: 10.99, img: 'img/cut-nimki.webp', desc: 'Steamed potato cubes tossed with Dharan-style spices and herbs, topped with crispy fried pastries.', groups: [] },
+{ id: 'ac', name: 'Aalu Chop', cat: 'fav', price: 8.99, img: 'img/aloo-plate.webp', desc: 'Nepali-style potato fritters served with tangy sauce.', groups: [] },
+{ id: 'pp', name: 'Pani Puri', cat: 'fav', price: 9.99, img: 'img/plate-hq.webp', desc: 'Crispy hollow shells filled with mashed potato, chickpea and tangy spiced water.', groups: [] },
+{ id: 'cs', name: 'Chicken Sausage', cat: 'fav', price: 8.99, img: 'img/cut-sausage.webp', desc: 'Juicy deep-fried sausages served with a special Nepali spice mix.', groups: [] },
+{ id: 'dl', name: 'Dry Laphing', cat: 'lap', price: 10.99, img: 'img/cut-drylaphing.webp', desc: 'Jelly-like mung-bean starch served with savoury sauces, chilli oil and gluten.', groups: [] },
+{ id: 'jl', name: 'Jhol Laphing', cat: 'lap', price: 11.99, img: 'img/cut-jhollaphing.webp', desc: 'Jelly-like mung-bean starch with savoury sauces, chilli oil and gluten in a spicy, tangy cold soup.', groups: [] },
+{ id: 'jc', name: 'Jhapali Chatpate', cat: 'jha', price: 9.99, img: 'img/cut-gilo.webp', must: true, desc: 'Our must-try Jhapa-style chatpate — choose Gilo or Sukkha.', groups: [{ name: 'Type', choices: [{ l: 'Gilo Chatpate', p: 2, img: 'img/cut-gilo.webp' }, { l: 'Sukkha Chatpate', p: 0, img: 'img/cut-sukkha.webp' }] }] },
+{ id: 'kn', name: 'Keema Noodles', cat: 'kee', price: 14.99, img: 'img/noodle-plate.webp', desc: 'Thick noodles with savoury minced chicken, chilli oil, soy sauce and steamed bok choy.', groups: [] },
+{ id: 'k1', name: 'Side Chips', cat: 'kids', price: 5.99, img: '', desc: 'A side of chips.', groups: [] },
+{ id: 'k2', name: 'Nugget Box', cat: 'kids', price: 8.99, img: '', desc: 'House-made nuggets with a side of chips and tomato sauce.', groups: [] },
+{ id: 'k3', name: 'Kids Drink', cat: 'kids', price: 3.99, img: 'img/kids.webp', desc: 'A drink for the little ones.', groups: [] },
+{ id: 'd1', name: 'Coke / Fanta', cat: 'drinks', price: 3.80, img: 'img/coke.webp', desc: 'Chilled soft drink.', groups: [{ name: 'Choose', choices: [{ l: 'Coke', p: 0, img: 'img/coke.webp' }, { l: 'Fanta', p: 0, img: 'img/fanta.webp' }] }] },
+{ id: 'd2', name: 'Solo / Mountain Dew', cat: 'drinks', price: 3.80, img: 'img/solo.webp', desc: 'Chilled soft drink.', groups: [{ name: 'Choose', choices: [{ l: 'Solo', p: 0, img: 'img/solo.webp' }, { l: 'Mountain Dew', p: 0, img: 'img/mdew.webp' }] }] },
+{ id: 'd3', name: 'Red Bull / V', cat: 'drinks', price: 4.50, img: 'img/redbull.webp', desc: 'Energy drink.', groups: [{ name: 'Choose', choices: [{ l: 'Red Bull', p: 0, img: 'img/redbull.webp' }, { l: 'V', p: 0, img: 'img/v.webp' }] }] },
+{ id: 'd4', name: 'Water', cat: 'drinks', price: 3.50, img: 'img/water.webp', desc: 'Bottled water.', groups: [] }
+];
+var byId = {}; base.forEach(function (b) { byId[b.id] = b; });
+var keyOf = function (b, picks) { return [b.id].concat(picks).join('|'); };
+var defPicks = function (b) { return b.groups.map(function () { return 0; }); };
+var unit = function (b, picks) { var u = b.price; b.groups.forEach(function (g, gi) { u += g.choices[picks[gi] || 0].p; }); return u; };
+var minMax = function (b) { var lo = b.price, hi = b.price; b.groups.forEach(function (g) { var ps = g.choices.map(function (c) { return c.p; }); lo += Math.min.apply(null, ps); hi += Math.max.apply(null, ps); }); return [lo, hi]; };
+var setQty = function (k, n) { var nq = Object.assign({}, qty); if (n <= 0) delete nq[k]; else nq[k] = n; self.setState({ qty: nq }); };
+var items = base.filter(function (b) {
+return (cat === 'all' || b.cat === cat) && (!q || (b.name + ' ' + b.desc).toLowerCase().indexOf(q) >= 0);
+}).map(function (b) {
+var k = keyOf(b, defPicks(b)); var n = qty[k] || 0; var mm = minMax(b);
+return {
+name: b.name, img: b.img, hasImg: !!b.img, noImg: !b.img, catLabel: CATS[b.cat], must: !!b.must, desc: b.desc,
+priceText: mm[0] === mm[1] ? fmt(mm[0]) : 'From ' + fmt(mm[0]),
+qty: n, showStep: canOrder && n > 0, showAdd: canOrder && n === 0, locked: !canOrder,
+add: function () { setQty(k, n + 1); },
+dec: function () { setQty(k, n - 1); },
+open: function () { self.setState({ sel: b.id, selQty: 1, picks: defPicks(b) }); },
+addLabel: 'Add ' + b.name + ' to cart', decLabel: 'Remove one ' + b.name, viewLabel: 'View ' + b.name
+};
+});
+var cats = [['all', 'View all']].concat(Object.keys(CATS).map(function (k) { return [k, CATS[k]]; })).map(function (c) {
+var on = cat === c[0];
+return {
+label: c[1], pressed: on ? 'true' : 'false',
+style: 'min-height: 40px; padding: 0 18px; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 600; border: 1px solid ' + (on ? '#D99A35' : '#3A211D') + '; background: ' + (on ? '#D99A35' : '#1E1210') + '; color: ' + (on ? '#1A0F0D' : '#CDB8AA'),
+pick: function () { self.setState({ cat: c[0] }); }
+};
+});
+var subtotal = 0, count = 0;
+var lines = Object.keys(qty).filter(function (k) { return byId[k.split('|')[0]] && qty[k] > 0; }).map(function (k) {
+var parts = k.split('|'); var b = byId[parts[0]]; var picks = parts.slice(1).map(Number); var n = qty[k];
+var u = unit(b, picks); subtotal += u * n; count += n;
+var opt = b.groups.map(function (g, gi) { return g.choices[picks[gi] || 0].l; }).join(' · ');
+return {
+name: b.name, opt: opt, hasOpt: !!opt, img: b.img, hasImg: !!b.img, noImg: !b.img, qty: n, lineTotal: fmt(u * n),
+inc: function () { setQty(k, n + 1); }, dec: function () { setQty(k, n - 1); },
+incLabel: 'One more ' + b.name, decLabel: 'One less ' + b.name
+};
+});
+var s = byId[st.sel];
+var selQty = st.selQty || 1;
+var picks = st.picks || (s ? defPicks(s) : []);
+var selUnit = s ? unit(s, picks) : 0;
+var selImg = s ? s.img : '';
+if (s) s.groups.forEach(function (g, gi) { var c = g.choices[picks[gi] || 0]; if (c && c.img) selImg = c.img; });
+return {
+hasNotice: !!nz, noticeText: nz ? nz[0] : '', noticeStyle: nz ? 'display: flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 16px; text-align: center; font-size: 14px; font-weight: 700; background: ' + nz[1] + '; color: ' + nz[2] : '',
+canOrder: canOrder, cantOrder: !canOrder, showSpecials: (this.props.specials ?? 'shown') === 'shown', showBar: canOrder && count > 0,
+orderNote: canOrder ? 'Pickup only · Card or cash at pickup' : 'Online ordering is paused right now',
+submitText: canOrder ? 'Add To Cart · ' + fmt(selUnit * selQty) : 'Ordering paused',
+submitStyle: 'min-height: 52px; border-radius: 14px; border: 0; font-size: 15px; font-weight: 600; ' + (canOrder ? 'background: #9E2F2A; color: #FFF8EF; cursor: pointer' : 'background: #2A1916; color: #9C8678; cursor: not-allowed'),
+cats: cats, items: items, empty: items.length === 0,
+lines: lines, noLines: lines.length === 0, count: count,
+subtotal: fmt(subtotal), total: fmt(subtotal),
+cartLabel: 'Cart, ' + count + ' items',
+hasSel: !!s,
+sel: s ? {
+name: s.name, desc: s.desc, img: selImg, hasImg: !!selImg, noImg: !selImg,
+priceText: fmt(selUnit), lineText: fmt(selUnit * selQty),
+groups: s.groups.map(function (g, gi) {
+return { name: g.name, choices: g.choices.map(function (c, ci) {
+var on = (picks[gi] || 0) === ci;
+return { label: c.l + (c.p ? ' +' + fmt(c.p) : ''), pressed: on ? 'true' : 'false',
+pick: function () { var np = picks.slice(); np[gi] = ci; self.setState({ picks: np }); },
+style: 'min-height: 42px; padding: 0 18px; border-radius: 999px; cursor: pointer; font-weight: 600; border: 1px solid ' + (on ? '#D99A35' : '#3A211D') + '; background: ' + (on ? '#D99A35' : '#1E1210') + '; color: ' + (on ? '#1A0F0D' : '#F3E7DC') };
+}) };
+})
+} : { name: '', desc: '', img: '', hasImg: false, noImg: false, priceText: '', lineText: '', groups: [] },
+selQty: selQty,
+selInc: function () { self.setState({ selQty: selQty + 1 }); },
+selDec: function () { self.setState({ selQty: Math.max(1, selQty - 1) }); },
+closeSel: function () { self.setState({ sel: null }); },
+openMust: function () { self.setState({ sel: 'jc', selQty: 1, picks: [0] }); },
+addSel: function (e) { if (e && e.preventDefault) e.preventDefault(); if (s) { var k = keyOf(s, picks); var nq = Object.assign({}, qty); nq[k] = (nq[k] || 0) + selQty; self.setState({ qty: nq, sel: null }); } },
+onSearch: function (e) { self.setState({ q: e.target.value }); }
+};
+}
+}
+</script>
+<script>window.DC_PROPS={specials:'none'};</script>
+<script src="js/morphdom.min.js"></script>
+<script src="js/dc-lite.js"></script>
+</body>
+</html>

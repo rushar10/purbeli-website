@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your order – Purbeli</title>
+<meta name="description" content="Purbeli – Flavour on Wheels. Nepalese momo, chowmein, laphing, chatpate and more at 33 Glenroy Road, Glenroy VIC. Order online for pickup.">
+<link rel="icon" href="img/purbeli-logo-cream.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#140C0B}
+a{color:#F3E7DC}a:hover{color:#D99A35}
+.mn *{box-sizing:border-box}
+.mn a:focus-visible{outline:2px solid #D99A35;outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="dc-template">
+
+<div class="mn" style="background: #140C0B; color: #F3E7DC; font-family: Manrope, system-ui, sans-serif; font-size: 15px; line-height: 1.55; min-height: 100vh">
+
+<header style="background: #140C0B; border-bottom: 1px solid #2A1916">
+<div style="max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="index.html" aria-label="Purbeli home" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<img src="img/purbeli-logo-cream.png" alt="Purbeli logo" style="display: block; width: 64px; height: 55px; object-fit: contain">
+<span style="display: flex; flex-direction: column; line-height: 1.2">
+<span style="font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #BFA99B">Flavour on Wheels</span>
+<span style="font-family: 'Playfair Display', serif; font-size: 20px">Purbeli</span>
+</span>
+</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px; font-size: 14px; font-weight: 500">
+<a href="index.html" style="text-decoration: none">Home</a>
+<a href="menu.html" style="text-decoration: none">Menu</a>
+<a href="order.html" aria-current="page" style="text-decoration: none; color: #D99A35; font-weight: 700">My order</a>
+</nav>
+</div>
+</header>
+
+<div style="max-width: 1180px; margin: 0 auto; padding: 24px 24px 80px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; align-items: center; gap: 14px">
+<a href="menu.html" aria-label="Back to menu" style="width: 44px; height: 44px; border-radius: 50%; background: #1E1210; border: 1px solid #3A211D; display: flex; align-items: center; justify-content: center; text-decoration: none; flex: 0 0 auto"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></a>
+<div style="display: flex; flex-direction: column; line-height: 1.2">
+<h1 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 34px">Order <em style="color: #E07A6A">#[Order ref]</em></h1>
+<span style="font-size: 13px; color: #BFA99B">Placed [date &amp; time]</span>
+</div>
+</div>
+
+<section style="border-radius: 22px; background: #8E2B27; border: 1px solid #B4473E; padding: 22px 26px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: center; gap: 16px">
+<span aria-hidden="true" style="width: 56px; height: 56px; border-radius: 50%; background: #FFF8EF; display: flex; align-items: center; justify-content: center; flex: 0 0 auto"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8E2B27" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<strong style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 28px; line-height: 1.1">{{headline}}</strong>
+<span style="font-size: 14px; color: #F6D9CF">{{sub}}</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-end; line-height: 1.2">
+<span style="font-size: 12px; color: #F6D9CF">Pickup</span>
+<strong style="font-size: 20px">[Pickup time]</strong>
+</div>
+</section>
+
+<section aria-labelledby="st-h" style="border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17; padding: 22px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 id="st-h" style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 24px">Order status</h2>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #9FC27A"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #9FC27A"></span>Updates live</span>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="5">
+<li aria-current="{{s.current}}" style="{{s.style}}">
+<span style="{{s.dotStyle}}">{{s.num}}</span>
+<span style="font-weight: 700; font-size: 14px">{{s.label}}</span>
+<span style="font-size: 12px; color: #BFA99B">{{s.note}}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px">
+<section aria-labelledby="it-h" style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<h2 id="it-h" style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 24px">Items</h2>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17"><img src="img/cut-momo.webp" alt="" style="width: 76px; height: 76px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 6px 8px rgba(0,0,0,.5))"><span style="flex: 1; display: flex; flex-direction: column"><strong style="font-size: 15px; text-transform: uppercase">Momo</strong><span style="font-size: 13px; color: #BFA99B">Chicken · Steamed · Qty 2</span></span><span style="font-weight: 700; color: #D99A35">$29.98</span></div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17"><img src="img/plate-hq.webp" alt="" style="width: 76px; height: 76px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 6px 8px rgba(0,0,0,.5))"><span style="flex: 1; display: flex; flex-direction: column"><strong style="font-size: 15px; text-transform: uppercase">Pani Puri</strong><span style="font-size: 13px; color: #BFA99B">Extra pani on the side · Qty 1</span></span><span style="font-weight: 700; color: #D99A35">$9.99</span></div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17"><img src="img/aloo-plate.webp" alt="" style="width: 76px; height: 76px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 6px 8px rgba(0,0,0,.5))"><span style="flex: 1; display: flex; flex-direction: column"><strong style="font-size: 15px; text-transform: uppercase">Aalu Chop</strong><span style="font-size: 13px; color: #BFA99B">Qty 1</span></span><span style="font-weight: 700; color: #D99A35">$8.99</span></div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17"><img src="img/noodle-plate.webp" alt="" style="width: 76px; height: 76px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 6px 8px rgba(0,0,0,.5))"><span style="flex: 1; display: flex; flex-direction: column"><strong style="font-size: 15px; text-transform: uppercase">Keema Noodles</strong><span style="font-size: 13px; color: #BFA99B">Chicken · Qty 1</span></span><span style="font-weight: 700; color: #D99A35">$14.99</span></div>
+</section>
+
+<aside style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17; padding: 22px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<h2 style="margin: 0 0 4px; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 24px">Order details</h2>
+<div style="display: flex; justify-content: space-between; color: #BFA99B"><span>Subtotal</span><span>$63.95</span></div>
+<div style="display: flex; justify-content: space-between; color: #BFA99B"><span>Pickup</span><span>Free</span></div>
+<div style="display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid #3A211D; font-weight: 800; font-size: 17px"><span>Total</span><span>$63.95 AUD</span></div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid #3A211D"><span style="color: #BFA99B">{{method}}</span><span style="{{payChip}}">{{payStatus}}</span></div>
+<sc-if value="{{isCash}}" hint-placeholder-val="{{false}}"><p style="margin: 0; padding: 10px 12px; border-radius: 12px; background: #2A1916; color: #CDB8AA; font-size: 13px">Please bring cash. Staff will mark the order paid when you collect it.</p></sc-if>
+</div>
+<div style="border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; font-size: 14px">
+<strong style="font-size: 15px">Pickup from</strong>
+<span style="color: #CDB8AA">33 Glenroy Road, Glenroy VIC 3046</span>
+<a href="tel:0470402367" style="margin-top: 6px; display: inline-flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 14px; background: #9E2F2A; color: #FFF8EF; text-decoration: none; font-weight: 700">Call 0470 402 367</a>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</template>
+<script type="text/x-dc" id="dc-script" data-props='{"payment":{"editor":"enum","options":["card","cash"],"default":"card"},"status":{"editor":"enum","options":["received","accepted","preparing","ready","collected"],"default":"preparing"},"$preview":{"width":1440,"height":1300}}'>
+class Component extends DCLogic {
+renderVals() {
+var pay = this.props.payment ?? 'card';
+var status = this.props.status ?? 'preparing';
+var cash = pay === 'cash';
+var keys = ['received', 'accepted', 'preparing', 'ready', 'collected'];
+var labels = ['Received', 'Accepted', 'Preparing', 'Ready for pickup', 'Collected'];
+var notes = [cash ? 'Waiting for the restaurant' : 'Payment confirmed', 'The kitchen has it', 'Being cooked now', 'Come and collect', 'Enjoy!'];
+var cur = Math.max(0, keys.indexOf(status));
+var steps = keys.map(function (k, i) {
+var done = i < cur, now = i === cur, lit = done || now;
+return {
+num: done ? '✓' : String(i + 1), label: labels[i], note: lit ? notes[i] : '', current: now ? 'step' : 'false',
+style: 'display: flex; flex-direction: column; gap: 6px; padding: 14px; border-radius: 16px; background: ' + (now ? '#2A1714' : '#140C0B') + '; border: 1px solid ' + (now ? '#D99A35' : '#2E1B17') + '; color: ' + (lit ? '#F3E7DC' : '#9C8678'),
+dotStyle: 'width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; ' + (lit ? 'background: #D99A35; color: #1A0F0D' : 'border: 1px solid #6B3A33; color: #9C8678')
+};
+});
+return {
+steps: steps, isCash: cash,
+headline: cash ? 'Order received' : 'Order confirmed',
+sub: cash ? 'The restaurant will confirm it shortly. Pay cash at pickup.' : 'Payment went through and the kitchen has your order.',
+method: cash ? 'Cash at pickup' : 'Card (Stripe)',
+payStatus: cash ? 'Unpaid' : 'Paid',
+payChip: 'font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; ' + (cash ? 'color: #F2C230; border: 1px solid #F2C230' : 'color: #1A0F0D; background: #9FC27A')
+};
+}
+}
+</script>
+<script src="js/morphdom.min.js"></script>
+<script src="js/dc-lite.js"></script>
+</body>
+</html>

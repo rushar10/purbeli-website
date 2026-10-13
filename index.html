@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Purbeli – Flavour on Wheels | Nepalese street food, Glenroy</title>
+<meta name="description" content="Purbeli – Flavour on Wheels. Nepalese momo, chowmein, laphing, chatpate and more at 33 Glenroy Road, Glenroy VIC. Order online for pickup.">
+<link rel="icon" href="img/purbeli-logo-cream.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&amp;family=Manrope:wght@400;500;600;700&amp;family=Tiro+Devanagari+Hindi&amp;display=swap">
+<style>
+body{margin:0;background:#140C0B}
+a{color:#F3E7DC}a:hover{color:#D99A35}
+.pb *{box-sizing:border-box}
+.scene-wrap{position:relative;width:680px;height:640px;flex:0 0 auto;perspective:1300px}
+.ring-par{position:absolute;left:0;top:-20px;width:680px;height:680px;will-change:transform}
+.ring-svg{display:block;width:680px;height:680px;animation:sway 14s ease-in-out infinite;transform-origin:50% 50%}
+.fb{position:absolute;left:110px;top:90px;width:460px;height:460px;transition:opacity .6s ease;will-change:transform;transform-style:preserve-3d}
+.face{position:absolute;inset:0;transition:opacity .2s linear}
+.face img{display:block;width:100%;height:100%;border-radius:50%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.7))}
+.orbit-line{position:absolute;left:50px;top:250px;width:580px;height:150px;border-radius:50%;border:1px solid rgba(217,154,53,.5);pointer-events:none}
+.gl{position:absolute;left:0;top:0;width:680px;height:640px;display:block;opacity:0;transition:opacity .8s ease}
+.lb3{position:absolute;display:flex;flex-direction:column;align-items:center;gap:12px;white-space:nowrap;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#CDB8AA;text-shadow:0 2px 10px rgba(0,0,0,.85);transform:translate(-50%, calc(-100% + 5px));transition:color .35s ease;background:none;border:0;padding:8px 6px;font:inherit;font-size:12px;cursor:pointer}
+.lb3:hover{color:#F3E7DC}
+.tapHint{display:none}
+@media (hover:none){.tapHint{display:block}}
+.lb3.on{color:#D99A35}
+.lb3 .dot{transition:transform .35s ease}
+.lb3.on .dot{transform:scale(1.5)}
+.lb3 .dot{width:10px;height:10px;border-radius:50%;background:#D99A35;box-shadow:0 0 12px rgba(217,154,53,.85)}
+.steam-anchor{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none}
+.steam{position:absolute;width:16px;height:150px;border-radius:16px;background:linear-gradient(to top,rgba(255,250,244,0),rgba(255,250,244,.3) 45%,rgba(255,250,244,0));filter:blur(8px);animation:rise 5.5s ease-in-out infinite;opacity:0}
+.still .ring-svg,.still .steam{animation-play-state:paused}
+@keyframes sway{0%,100%{transform:rotateY(-14deg) rotateZ(-3deg)}50%{transform:rotateY(14deg) rotateZ(3deg)}}
+@keyframes rise{0%{opacity:0;transform:translateY(20px) scaleX(1)}35%{opacity:.85}100%{opacity:0;transform:translateY(-100px) scaleX(2.4)}}
+@media (prefers-reduced-motion: reduce){.ring-svg,.steam{animation:none!important}}
+@media (max-width:720px){.scene-wrap{transform:scale(.52);margin:-150px -160px}}
+@media (max-width:640px){.pb .nl{display:none}.pb .aside{text-align:center!important;align-items:center!important;max-width:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="dc-template">
+
+<div class="{{rootClass}}" style="background: #140C0B; color: #F3E7DC; font-family: Manrope, system-ui, sans-serif; font-size: 16px; line-height: 1.6; overflow: hidden">
+<sc-if value="{{hasNotice}}" hint-placeholder-val="{{false}}">
+<div role="status" style="{{noticeStyle}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg><span>{{noticeText}}</span></div>
+</sc-if>
+
+<header style="max-width: 1280px; margin: 0 auto; padding: 22px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" aria-label="Purbeli home" style="display: flex; align-items: center; gap: 14px; text-decoration: none">
+<img src="img/purbeli-logo-cream.png" alt="Purbeli logo" style="display: block; width: 80px; height: 69px; object-fit: contain">
+<span style="display: flex; flex-direction: column; line-height: 1.15">
+<span style="font-family: 'Playfair Display', serif; font-size: 20px; color: #F3E7DC">Purbeli</span>
+<span style="font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: #BFA99B">Flavour on Wheels</span>
+</span>
+</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase">
+<a class="nl" href="menu.html" style="text-decoration: none">Menu</a>
+<a class="nl" href="#about" style="text-decoration: none">About</a>
+<a class="nl" href="#gallery" style="text-decoration: none">Gallery</a>
+<a class="nl" href="#visit" style="text-decoration: none">Visit</a>
+<a href="menu.html" style="text-decoration: none; padding: 12px 20px; border: 1px solid {{accent}}; color: {{accent}}">Order Pickup</a>
+</nav>
+</header>
+
+<section id="top" onPointerMove="{{onMove}}" onPointerLeave="{{onLeave}}" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 40px 24px 24px; display: flex; flex-direction: column; align-items: center; text-align: center">
+<div style="font-family: 'Tiro Devanagari Hindi', serif; font-size: 30px; color: {{accent}}; line-height: 1.2">पुर्वेली</div>
+<h1 style="margin: 10px 0 12px; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(40px, 6vw, 76px); line-height: 1.05; letter-spacing: -.01em">Flavour on <em style="color: #E07A6A">Wheels</em></h1>
+<p style="margin: 0; max-width: 560px; color: #CDB8AA; font-size: 17px">Nepalese street food from Glenroy. Order ahead online, pick it up hot.</p>
+
+<div style="width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-top: 8px">
+<div class="aside" style="flex: 1 1 220px; max-width: 260px; text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 8px">
+<div style="font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #F3E7DC">The menu</div>
+<div style="font-size: 14px; color: #BFA99B">Momo, chowmein, laphing, pani puri, aalu chop and more — from $8.99.</div>
+<a href="menu.html" style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; text-decoration: none; color: {{accent}}">Explore Menu →</a>
+</div>
+
+<div class="scene-wrap" ref="{{wrapRef}}" onPointerDown="{{onDown}}" onPointerUp="{{onUp}}" style="touch-action: pan-y; cursor: pointer">
+<div class="ring-par" ref="{{ringRef}}" aria-hidden="true">
+<svg class="ring-svg" viewBox="0 0 680 680" fill="none" stroke="#B4473E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 442.6 58.1 A 300 300 0 1 0 490 599.8"></path>
+<g transform="translate(470 66) rotate(28)">
+<path d="M -14 -46 V -12 Q -14 2 0 2 Q 14 2 14 -12 V -46"></path>
+<path d="M -4.5 -46 V -16"></path>
+<path d="M 4.5 -46 V -16"></path>
+<path d="M 0 2 V 26"></path>
+</g>
+<g transform="translate(512 584) rotate(140)">
+<ellipse cx="0" cy="-30" rx="18" ry="27" fill="#B4473E"></ellipse>
+<path d="M 0 -4 V 26"></path>
+</g>
+<g fill="#B4473E" stroke="none">
+<path d="M 46 344 C 14 330 4 296 22 266 C 44 290 54 318 46 344 Z"></path>
+<path d="M 52 352 C 38 322 50 290 80 280 C 86 312 76 340 52 352 Z"></path>
+</g>
+</svg>
+</div>
+<div aria-hidden="true" style="position: absolute; left: 140px; top: 455px; width: 400px; height: 90px; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(0,0,0,.8), rgba(0,0,0,0) 70%); filter: blur(8px)"></div>
+<div class="orbit-line" aria-hidden="true"></div>
+<div class="fb" ref="{{fbRef}}"><div class="face"><img src="img/plate-hq.webp" alt="Pani puri"></div><div class="face" style="opacity: 0"><img src="img/aloo-plate.webp" alt="Aalu chop"></div><div class="face" style="opacity: 0"><img src="img/noodle-plate.webp" alt="Noodles"></div></div>
+<canvas class="gl" ref="{{canvasRef}}" width="680" height="640" role="img" aria-label="A 3D dish that flips between pani puri, aalu chop and noodles"></canvas>
+<div class="steam-anchor" ref="{{steamRef}}" aria-hidden="true">
+<div class="steam" style="left: -34px; top: -170px; animation-delay: 0s"></div>
+<div class="steam" style="left: -8px; top: -186px; animation-delay: 1.8s"></div>
+<div class="steam" style="left: 18px; top: -168px; animation-delay: 3.6s"></div>
+</div>
+<button type="button" class="lb3" ref="{{l0Ref}}" onClick="{{pick1}}" aria-label="Show Aalu Chop" style="left: 50px; top: 325px"><span>Aalu Chop</span><span class="dot"></span></button>
+<button type="button" class="lb3 on" ref="{{l1Ref}}" onClick="{{pick0}}" aria-label="Show Pani Puri" style="left: 630px; top: 325px"><span>Pani Puri</span><span class="dot"></span></button>
+<button type="button" class="lb3" ref="{{l2Ref}}" onClick="{{pick2}}" aria-label="Show Keema Noodles" style="left: 340px; top: 58px"><span>Keema Noodles</span><span class="dot"></span></button>
+</div>
+
+<div class="aside" style="flex: 1 1 220px; max-width: 260px; text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 8px">
+<div style="font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #F3E7DC">Pickup only</div>
+<div style="font-size: 14px; color: #BFA99B">Pay securely online, or choose to pay cash when you collect.</div>
+<a href="menu.html" style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; text-decoration: none; color: {{accent}}">Order Pickup →</a>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 8px">
+<a href="menu.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; background: {{accent}}; color: #1A0F0D; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase">Explore Menu</a>
+<a href="menu.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; border: 1px solid #F3E7DC; color: #F3E7DC; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase">Order Pickup</a>
+</div>
+<p class="tapHint" style="margin: 14px 0 0; font-size: 13px; color: #9C8678">Tap or swipe the dish to flip it</p>
+<div style="width: 1px; height: 90px; background: {{accent}}; margin-top: 56px"></div>
+</section>
+
+<section id="about" style="max-width: 1280px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 64px">
+<div style="flex: 1 1 420px; min-width: 0; position: relative">
+<img src="img/about-spread.jpg" alt="A spread of Purbeli dishes: aalu chop, laphing, momo, chatpate and pani puri" style="display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: 50% 45%">
+<div style="position: absolute; right: -18px; bottom: -18px; width: 120px; height: 120px; border-radius: 50%; border: 1px solid {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Tiro Devanagari Hindi', serif; font-size: 22px; color: {{accent}}; background: #140C0B">पुर्वेली</div>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #BFA99B">About Purbeli</div>
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(32px, 4vw, 46px); line-height: 1.12"><em style="color: {{accent}}">Nepalese flavour,</em> made fresh in Glenroy</h2>
+<p style="margin: 0; color: #CDB8AA; max-width: 520px">[Purbeli's story in the owners' words — two or three sentences on the food, the people behind it and the truck.]</p>
+<p style="margin: 0; color: #CDB8AA; max-width: 520px">Every order is cooked when you place it and waiting for you at 33 Glenroy Road.</p>
+<a href="menu.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 46px; padding: 0 24px; border: 1px solid #F3E7DC; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase">See the menu</a>
+</div>
+</section>
+
+<section id="menu" style="background: #1C110F; padding: 96px 24px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #BFA99B">Featured dishes</div>
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(32px, 4vw, 46px); line-height: 1.1">From the <em style="color: #E07A6A">wheels</em> to your hands</h2>
+</div>
+<a href="menu.html" style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; text-decoration: none; color: {{accent}}">View the full menu →</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px">
+
+<article style="background: #140C0B; border: 1px solid #3A211D; display: flex; flex-direction: column">
+<img src="img/panipuri-card.jpg" alt="Pani puri on a white plate around a bowl of tangy pani" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 50%">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 26px">Pani Puri</h3>
+<span style="color: {{accent}}; font-weight: 600">$9.99</span>
+</div>
+<p style="margin: 0; color: #BFA99B; font-size: 14px; flex: 1">Crispy hollow shells filled with mashed potato, chickpea and tangy spiced water.</p>
+<a href="menu.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; background: #8E2B27; color: #F3E7DC; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase">Add to order</a>
+</div>
+</article>
+
+<article style="background: #140C0B; border: 1px solid #3A211D; display: flex; flex-direction: column">
+<img src="img/aloo-card.jpg" alt="Aalu chop with dipping sauce in a takeaway bowl" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 55%">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 26px">Aalu Chop</h3>
+<span style="color: {{accent}}; font-weight: 600">$8.99</span>
+</div>
+<p style="margin: 0; color: #BFA99B; font-size: 14px; flex: 1">Nepali-style potato fritters served with tangy sauce.</p>
+<a href="menu.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; background: #8E2B27; color: #F3E7DC; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase">Add to order</a>
+</div>
+</article>
+
+<article style="background: #140C0B; border: 1px solid #3A211D; display: flex; flex-direction: column">
+<img src="img/noodle-card.jpg" alt="Noodles topped with spiced mince, peanuts and bok choy" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 55%">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 26px">Keema Noodles</h3>
+<span style="color: {{accent}}; font-weight: 600">$14.99</span>
+</div>
+<p style="margin: 0; color: #BFA99B; font-size: 14px; flex: 1">Thick noodles with savoury minced chicken, chilli oil, soy sauce and steamed bok choy.</p>
+<a href="menu.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; background: #8E2B27; color: #F3E7DC; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase">Add to order</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="order" style="position: relative; padding: 110px 24px; text-align: center">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 36px; font-family: 'Tiro Devanagari Hindi', serif; font-size: clamp(120px, 20vw, 280px); line-height: 1; color: #1F1311; white-space: nowrap">पुर्वेली</div>
+<div style="position: relative; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 12px; align-items: center">
+<div style="font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #BFA99B">How pickup works</div>
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(32px, 4vw, 46px); line-height: 1.1">Order ahead. <em style="color: {{accent}}">Skip the wait.</em></h2>
+</div>
+<div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; text-align: left">
+<div style="border-top: 1px solid {{accent}}; padding-top: 20px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; color: {{accent}}">01</span>
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 22px">Choose your dishes</h3>
+<p style="margin: 0; color: #BFA99B; font-size: 14px">Add items, pick options and leave notes or allergy details for the kitchen.</p>
+</div>
+<div style="border-top: 1px solid {{accent}}; padding-top: 20px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; color: {{accent}}">02</span>
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 22px">Pay your way</h3>
+<p style="margin: 0; color: #BFA99B; font-size: 14px">Pay securely by card online, or select Pay Cash at Pickup.</p>
+</div>
+<div style="border-top: 1px solid {{accent}}; padding-top: 20px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; color: {{accent}}">03</span>
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 22px">Collect it hot</h3>
+<p style="margin: 0; color: #BFA99B; font-size: 14px">Choose a pickup time and collect from 33 Glenroy Road.</p>
+</div>
+</div>
+<a href="menu.html" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 34px; background: {{accent}}; color: #1A0F0D; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase">Start your order</a>
+</div>
+</section>
+
+<section id="gallery" style="max-width: 1280px; margin: 0 auto; padding: 24px 24px 96px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(30px, 3.6vw, 40px)">From the kitchen</h2>
+<a href="https://www.instagram.com/purbelifood" style="font-size: 13px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; color: {{accent}}">@purbelifood →</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+<img src="img/gallery-chicken-sausage.jpg" alt="Chicken sausage skewers with sauce" style="display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px">
+<img src="img/gallery-jhol-laphing.jpg" alt="Jhol laphing in a spicy cold soup" style="display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px">
+<img src="img/gallery-chowmein.jpg" alt="Chowmein with achar and lemon" style="display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px">
+<img src="img/gallery-gilo-chatpate.jpg" alt="Jhapali gilo chatpate" style="display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px">
+<img src="img/gallery-sukkha-chatpate.jpg" alt="Jhapali sukkha chatpate" style="display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px">
+</div>
+</section>
+
+<section id="visit" style="background: #8E2B27; padding: 88px 24px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #F6D9CF">Visit &amp; pickup</div>
+<h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(32px, 4vw, 46px); line-height: 1.1; color: #FFF8EF">33 Glenroy Road,<br>Glenroy VIC 3046</h2>
+<div style="display: flex; flex-direction: column; gap: 6px; font-size: 16px; color: #FFF8EF">
+<a href="tel:0470402367" style="color: #FFF8EF">0470 402 367</a>
+<a href="https://www.instagram.com/purbelifood" style="color: #FFF8EF">instagram.com/purbelifood</a>
+</div>
+<a href="menu.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 48px; padding: 0 26px; background: #FFF8EF; color: #8E2B27; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase">Order Pickup</a>
+</div>
+<div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 24px; color: #FFF8EF">Opening hours</h3>
+<div style="display: flex; flex-direction: column; color: #FFF8EF; font-size: 15px">
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid rgba(255,248,239,.3)"><span>Monday – Friday</span><span>[Hours]</span></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid rgba(255,248,239,.3)"><span>Saturday</span><span>[Hours]</span></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid rgba(255,248,239,.3)"><span>Sunday</span><span>[Hours]</span></div>
+</div>
+<p style="margin: 0; font-size: 13px; color: #F6D9CF">Hours shown here come from the restaurant's settings.</p>
+</div>
+<div style="flex: 1 1 300px; min-width: 0; min-height: 260px; border: 1px dashed rgba(255,248,239,.5); display: flex; align-items: center; justify-content: center; color: #F6D9CF; font-size: 13px; text-align: center; padding: 16px">Map — 33 Glenroy Road</div>
+</div>
+</section>
+
+<footer style="padding: 48px 24px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; font-size: 13px; color: #BFA99B">
+<div style="display: flex; align-items: center; gap: 14px">
+<img src="img/purbeli-logo-cream.png" alt="Purbeli logo" style="display: block; width: 72px; height: 62px; object-fit: contain">
+<span>© Purbeli – Flavour on Wheels · Nepalese food, Glenroy</span>
+</div>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px; letter-spacing: .14em; text-transform: uppercase; font-size: 12px">
+<a href="menu.html" style="text-decoration: none">Menu</a>
+<a href="menu.html" style="text-decoration: none">Order Pickup</a>
+<a href="#visit" style="text-decoration: none">Contact</a>
+<a href="https://www.instagram.com/purbelifood" style="text-decoration: none">Instagram</a>
+</nav>
+</div>
+</footer>
+</div>
+</template>
+<script type="text/x-dc" id="dc-script" data-props='{"notice":{"editor":"enum","options":["none","moved","closed"],"default":"none"},"accent":{"editor":"color","default":"#D99A35","options":["#D99A35","#E07A6A","#C9A86A","#F3E7DC"]},"motion":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":4200}}'>
+class Component extends DCLogic {
+componentDidMount() {
+this._start();
+}
+componentWillUnmount() {
+this._dead = true;
+if (this._raf) cancelAnimationFrame(this._raf);
+}
+_start() {
+var self = this;
+self._dead = false;
+self.cur = { x: 0, y: 0 };
+self.tgt = self.tgt || { x: 0, y: 0 };
+self.spin = 0;
+self.shown = 0;
+self.want = 0;
+self.anim = null;
+self.hover = false;
+self.last = performance.now();
+self.t0 = self.last;
+self.ready = false;
+self.reduce = false;
+try { self.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+try { self._initGL(); } catch (e) { self._fallback(); }
+var tick = function (now) {
+if (self._dead) return;
+try { self._frame(now); } catch (e) {}
+self._raf = requestAnimationFrame(tick);
+};
+self._raf = requestAnimationFrame(tick);
+}
+_fallback() {
+this.gl = null;
+this.ready = false;
+if (this.canvasEl) this.canvasEl.style.opacity = '0';
+if (this.fbEl) this.fbEl.style.opacity = '1';
+}
+_shader(type, src) {
+var gl = this.gl;
+var s = gl.createShader(type);
+gl.shaderSource(s, src);
+gl.compileShader(s);
+if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+return s;
+}
+_program(vs, fs) {
+var gl = this.gl;
+var p = gl.createProgram();
+gl.attachShader(p, this._shader(gl.VERTEX_SHADER, vs));
+gl.attachShader(p, this._shader(gl.FRAGMENT_SHADER, fs));
+gl.linkProgram(p);
+if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+return p;
+}
+_buffer(data, target) {
+var gl = this.gl;
+var b = gl.createBuffer();
+gl.bindBuffer(target || gl.ARRAY_BUFFER, b);
+gl.bufferData(target || gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+return b;
+}
+_initGL() {
+var self = this;
+var c = this.canvasEl;
+if (!c) { this._fallback(); return; }
+var dpr = Math.min(window.devicePixelRatio || 1, 2);
+c.width = Math.round(680 * dpr);
+c.height = Math.round(640 * dpr);
+var gl = null;
+try { gl = c.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: true }) || c.getContext('experimental-webgl'); } catch (e) { gl = null; }
+if (!gl || gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS) < 1) { this._fallback(); return; }
+this.gl = gl;
+var vsPlate = 'attribute vec2 aUV;uniform sampler2D uDepth;uniform mat4 uMVP;uniform mat4 uM;uniform float uH;varying vec2 vUV;varying vec3 vW;' +
+'void main(){float h=texture2D(uDepth,aUV).r*uH;vec3 p=vec3(aUV.x*2.0-1.0,1.0-aUV.y*2.0,h);vUV=aUV;vW=(uM*vec4(p,1.0)).xyz;gl_Position=uMVP*vec4(p,1.0);}';
+var fsPlate = 'precision mediump float;uniform sampler2D uTex;uniform sampler2D uDepth;uniform float uH;uniform float uT;uniform mat3 uNM;uniform vec3 uL;uniform vec3 uCam;varying vec2 vUV;varying vec3 vW;' +
+'void main(){vec4 c=texture2D(uTex,vUV);if(c.a<0.02)discard;' +
+'float hl=texture2D(uDepth,vUV-vec2(uT,0.0)).r;float hr=texture2D(uDepth,vUV+vec2(uT,0.0)).r;float hu=texture2D(uDepth,vUV-vec2(0.0,uT)).r;float hd=texture2D(uDepth,vUV+vec2(0.0,uT)).r;' +
+'vec3 n=normalize(vec3(-(hr-hl)*uH/(4.0*uT),-(hu-hd)*uH/(4.0*uT),1.0));vec3 N=normalize(uNM*n);vec3 L=normalize(uL);vec3 V=normalize(uCam-vW);' +
+'float d=max(dot(N,L),0.0);float lit=0.72+0.38*d;float sp=pow(max(dot(reflect(-L,N),V),0.0),40.0)*0.22;' +
+'float ao=0.82+0.18*smoothstep(0.0,0.35,texture2D(uDepth,vUV).r);' +
+'vec3 col=c.rgb*lit*ao+vec3(sp);gl_FragColor=vec4(col*c.a,c.a);}';
+var vsSolid = 'attribute vec3 aPos;attribute vec3 aNor;uniform mat4 uMVP;uniform mat3 uNM;uniform vec3 uL;uniform float uLit;varying float vS;' +
+'void main(){float d=max(dot(normalize(uNM*aNor),normalize(uL)),0.0);vS=mix(1.0,0.45+0.55*d,uLit);gl_Position=uMVP*vec4(aPos,1.0);}';
+var fsSolid = 'precision mediump float;uniform vec4 uColor;varying float vS;void main(){gl_FragColor=vec4(uColor.rgb*vS*uColor.a,uColor.a);}';
+this.pPlate = this._program(vsPlate, fsPlate);
+this.pSolid = this._program(vsSolid, fsSolid);
+var N = 180, i, j;
+var uv = new Float32Array((N + 1) * (N + 1) * 2);
+for (j = 0; j <= N; j++) for (i = 0; i <= N; i++) { uv[(j * (N + 1) + i) * 2] = i / N; uv[(j * (N + 1) + i) * 2 + 1] = j / N; }
+var idx = new Uint16Array(N * N * 6), k = 0;
+for (j = 0; j < N; j++) for (i = 0; i < N; i++) {
+var a = j * (N + 1) + i, b = a + 1, c2 = a + N + 1, d2 = c2 + 1;
+idx[k++] = a; idx[k++] = c2; idx[k++] = b; idx[k++] = b; idx[k++] = c2; idx[k++] = d2;
+}
+this.uvBuf = this._buffer(uv);
+this.idxBuf = this._buffer(idx, gl.ELEMENT_ARRAY_BUFFER);
+this.idxCount = idx.length;
+this.dishes = [
+{ col: 'img/plate-hq.webp', dep: 'img/plate-depth.png', H: 0.3, top: 0.03, rTop: 0.992, rBot: 0.97, bot: -0.07, wall: [0.93, 0.91, 0.88, 1], steamZ: 0.228, steamXY: [-0.034, 0.068] },
+{ col: 'img/aloo-plate.webp', dep: 'img/aloo-depth.png', H: 0.34, top: 0.3, rTop: 0.992, rBot: 0.86, bot: -0.14, wall: [0.74, 0.57, 0.38, 1], steamZ: 0.12, steamXY: [0.0, 0.0] },
+{ col: 'img/noodle-plate.webp', dep: 'img/noodle-depth.png', H: 0.25, top: 0.045, rTop: 0.992, rBot: 0.95, bot: -0.07, wall: [0.94, 0.93, 0.91, 1], steamZ: 0.24, steamXY: [0.0, 0.06] }
+];
+var di, S = 160;
+for (di = 0; di < this.dishes.length; di++) {
+var D = this.dishes[di], wall = [], wn = [];
+for (i = 0; i <= S; i++) {
+var t = i / S * Math.PI * 2, cs = Math.cos(t), sn = Math.sin(t);
+wall.push(cs * D.rBot, sn * D.rBot, D.bot, cs * D.rTop, sn * D.rTop, D.top);
+var slope = (D.rTop - D.rBot) / (D.top - D.bot);
+wn.push(cs, sn, -slope, cs, sn, -slope);
+}
+D.wallBuf = this._buffer(new Float32Array(wall));
+D.wallNor = this._buffer(new Float32Array(wn));
+}
+this.wallCount = (S + 1) * 2;
+var pending = this.dishes.length * 2;
+var done = function () {
+pending--;
+if (pending === 0) {
+var ok = self.dishes.every(function (D) { return D.texColor && D.texDepth; });
+if (!ok) { self._fallback(); return; }
+self.ready = true;
+if (self.canvasEl) self.canvasEl.style.opacity = '1';
+if (self.fbEl) self.fbEl.style.opacity = '0';
+}
+};
+this.dishes.forEach(function (D) {
+self._loadTex(D.col, function (t) { D.texColor = t; done(); });
+self._loadTex(D.dep, function (t) { D.texDepth = t; done(); });
+});
+}
+_loadTex(src, cb) {
+var self = this;
+var attempt = function (cors) {
+var img = new Image();
+if (cors) img.crossOrigin = 'anonymous';
+img.onload = function () {
+var gl = self.gl;
+if (!gl) { cb(null); return; }
+try {
+var t = gl.createTexture();
+gl.bindTexture(gl.TEXTURE_2D, t);
+gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+cb(t);
+} catch (e) {
+if (cors) attempt(false); else cb(null);
+}
+};
+img.onerror = function () { if (cors) attempt(false); else cb(null); };
+img.src = src;
+};
+attempt(true);
+}
+_frame(now) {
+var M4 = {
+mul: function (a, b) { var o = new Float32Array(16); for (var c = 0; c < 4; c++) for (var r = 0; r < 4; r++) { var s = 0; for (var q = 0; q < 4; q++) s += a[q * 4 + r] * b[c * 4 + q]; o[c * 4 + r] = s; } return o; },
+rx: function (a) { var c = Math.cos(a), s = Math.sin(a); return new Float32Array([1, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, 0, 0, 0, 1]); },
+ry: function (a) { var c = Math.cos(a), s = Math.sin(a); return new Float32Array([c, 0, -s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1]); },
+rz: function (a) { var c = Math.cos(a), s = Math.sin(a); return new Float32Array([c, s, 0, 0, -s, c, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]); },
+tr: function (x, y, z) { return new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, y, z, 1]); },
+persp: function (fy, as, n, f) { var t = 1 / Math.tan(fy / 2); return new Float32Array([t / as, 0, 0, 0, 0, t, 0, 0, 0, 0, (f + n) / (n - f), -1, 0, 0, 2 * f * n / (n - f), 0]); },
+nm: function (m) { return new Float32Array([m[0], m[1], m[2], m[4], m[5], m[6], m[8], m[9], m[10]]); },
+xf: function (m, p) { return [m[0] * p[0] + m[4] * p[1] + m[8] * p[2] + m[12], m[1] * p[0] + m[5] * p[1] + m[9] * p[2] + m[13], m[2] * p[0] + m[6] * p[1] + m[10] * p[2] + m[14], m[3] * p[0] + m[7] * p[1] + m[11] * p[2] + m[15]]; }
+};
+var dt = Math.min((now - this.last) / 1000, 0.05);
+this.last = now;
+var t = (now - this.t0) / 1000;
+var moving = (this.props.motion ?? true) && !this.reduce;
+var e = 1 - Math.pow(0.002, dt);
+this.cur.x += (this.tgt.x - this.cur.x) * e;
+this.cur.y += (this.tgt.y - this.cur.y) * e;
+if (moving && !this.hover && !this.anim && now > (this.holdUntil || 0) && now - (this.lastPick || this.t0) > 4200) { this.want = (this.shown + 1) % 3; this.lastPick = now; }
+var nx = this.tgt.x, ny = this.tgt.y;
+if (this.hover) {
+if (ny < -0.45 && Math.abs(nx) < 0.55) this.want = 2;
+else if (nx < -0.12) this.want = 1;
+else if (nx > 0.12) this.want = 0;
+}
+if (!this.anim && this.want !== this.shown) {
+this.anim = { from: this.shown, to: this.want, axis: (this.want === 2 || this.shown === 2) ? 'x' : 'y', dir: (this.want === 1 || this.want === 2) ? 1 : -1, p: 0 };
+}
+if (this.anim) {
+this.anim.p = Math.min(1, this.anim.p + dt / 0.85);
+if (this.anim.p >= 1) { this.shown = this.anim.to; this.anim = null; }
+}
+var pe = this.anim ? this.anim.p * this.anim.p * (3 - 2 * this.anim.p) : 0;
+var ang = pe * Math.PI;
+var dishIdx = this.anim ? (pe < 0.5 ? this.anim.from : this.anim.to) : this.shown;
+var rot = this.anim ? (pe < 0.5 ? ang : ang - Math.PI) * this.anim.dir : 0;
+var R = this.anim && this.anim.axis === 'x' ? M4.rx(rot) : M4.ry(rot);
+if (this.want !== this._shownLabel) {
+this._shownLabel = this.want;
+if (this.l0) this.l0.classList.toggle('on', this.want === 1);
+if (this.l1) this.l1.classList.toggle('on', this.want === 0);
+if (this.l2) this.l2.classList.toggle('on', this.want === 2);
+}
+var wob = moving && !this.hover ? Math.sin(t * 0.5) * 0.12 : 0;
+var tilt = 0.5 + this.cur.y * 0.24 + (moving && !this.hover ? Math.sin(t * 0.37) * 0.04 : 0);
+var yaw = this.cur.x * 0.3 + wob;
+var lift = Math.sin(ang) * 0.55;
+var W = 680, Hh = 640;
+var P = M4.persp(0.56, W / Hh, 0.1, 30);
+var V = M4.tr(0, -0.02, -4.7 + lift);
+var D = this.dishes ? this.dishes[dishIdx] : null;
+var M = M4.mul(M4.ry(yaw), M4.mul(M4.rx(-tilt), R));
+var PV = M4.mul(P, V);
+var toScreen = function (w) { var c = M4.xf(PV, w); return [(c[0] / c[3] * 0.5 + 0.5) * W, (0.5 - c[1] / c[3] * 0.5) * Hh]; };
+if (this.steamEl) {
+var sxy = D ? D.steamXY : [-0.034, 0.068], sz = D ? D.steamZ : 0.2;
+var bs = toScreen(M4.xf(M, [sxy[0], sxy[1], sz]));
+this.steamEl.style.transform = 'translate(' + bs[0].toFixed(1) + 'px,' + bs[1].toFixed(1) + 'px)';
+this.steamEl.style.opacity = Math.abs(Math.cos(ang)) > 0.7 ? '1' : '0';
+}
+if (this.ringEl) this.ringEl.style.transform = 'translate(' + (-this.cur.x * 18).toFixed(1) + 'px,' + (-this.cur.y * 14).toFixed(1) + 'px)';
+if (!this.gl || !this.ready) {
+if (this.fbEl) {
+var rx = (tilt - 0.5) * -40 + 6, ryd = yaw * 40;
+if (this.anim && this.anim.axis === 'x') rx += rot * 57.2958; else ryd += rot * 57.2958;
+this.fbEl.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ryd.toFixed(2) + 'deg)';
+var faces = this.fbEl.querySelectorAll('.face');
+for (var fi = 0; fi < faces.length; fi++) faces[fi].style.opacity = fi === dishIdx ? '1' : '0';
+}
+return;
+}
+var gl = this.gl;
+var cv = this.canvasEl;
+gl.viewport(0, 0, cv.width, cv.height);
+gl.clearColor(0, 0, 0, 0);
+gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+gl.enable(gl.DEPTH_TEST);
+gl.enable(gl.BLEND);
+gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+var light = [-0.45, 0.75, 0.95];
+var ps = this.pSolid;
+gl.useProgram(ps);
+var aPos = gl.getAttribLocation(ps, 'aPos'), aNor = gl.getAttribLocation(ps, 'aNor');
+gl.uniform3fv(gl.getUniformLocation(ps, 'uL'), light);
+gl.uniformMatrix4fv(gl.getUniformLocation(ps, 'uMVP'), false, M4.mul(PV, M));
+gl.uniformMatrix3fv(gl.getUniformLocation(ps, 'uNM'), false, M4.nm(M));
+gl.uniform1f(gl.getUniformLocation(ps, 'uLit'), 1);
+gl.uniform4fv(gl.getUniformLocation(ps, 'uColor'), D.wall);
+gl.bindBuffer(gl.ARRAY_BUFFER, D.wallBuf);
+gl.enableVertexAttribArray(aPos);
+gl.vertexAttribPointer(aPos, 3, gl.FLOAT, false, 0, 0);
+gl.bindBuffer(gl.ARRAY_BUFFER, D.wallNor);
+gl.enableVertexAttribArray(aNor);
+gl.vertexAttribPointer(aNor, 3, gl.FLOAT, false, 0, 0);
+gl.drawArrays(gl.TRIANGLE_STRIP, 0, this.wallCount);
+gl.disableVertexAttribArray(aNor);
+gl.disableVertexAttribArray(aPos);
+var pp = this.pPlate;
+gl.useProgram(pp);
+var aUV = gl.getAttribLocation(pp, 'aUV');
+gl.activeTexture(gl.TEXTURE0);
+gl.bindTexture(gl.TEXTURE_2D, D.texColor);
+gl.uniform1i(gl.getUniformLocation(pp, 'uTex'), 0);
+gl.activeTexture(gl.TEXTURE1);
+gl.bindTexture(gl.TEXTURE_2D, D.texDepth);
+gl.uniform1i(gl.getUniformLocation(pp, 'uDepth'), 1);
+gl.uniform1f(gl.getUniformLocation(pp, 'uH'), D.H);
+gl.uniform1f(gl.getUniformLocation(pp, 'uT'), 1 / 512);
+gl.uniformMatrix4fv(gl.getUniformLocation(pp, 'uMVP'), false, M4.mul(PV, M));
+gl.uniformMatrix4fv(gl.getUniformLocation(pp, 'uM'), false, M);
+gl.uniformMatrix3fv(gl.getUniformLocation(pp, 'uNM'), false, M4.nm(M));
+gl.uniform3fv(gl.getUniformLocation(pp, 'uL'), light);
+gl.uniform3fv(gl.getUniformLocation(pp, 'uCam'), [0, 0.02, 4.7 - lift]);
+gl.bindBuffer(gl.ARRAY_BUFFER, this.uvBuf);
+gl.enableVertexAttribArray(aUV);
+gl.vertexAttribPointer(aUV, 2, gl.FLOAT, false, 0, 0);
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.idxBuf);
+gl.drawElements(gl.TRIANGLES, this.idxCount, gl.UNSIGNED_SHORT, 0);
+gl.disableVertexAttribArray(aUV);
+}
+renderVals() {
+var self = this;
+var notice = this.props.notice ?? 'none';
+var NOTICE = { moved: ['This weekend we’ve moved: pickup is at [temporary address]. Back at 33 Glenroy Road on Monday.', '#D99A35', '#1A0F0D'], closed: ['Purbeli is closed today — back tomorrow. Online ordering is paused.', '#8E2B27', '#FFF8EF'] };
+var nz = NOTICE[notice];
+var motion = this.props.motion ?? true;
+if (!this._refs) {
+this._refs = {
+wrap: function (el) { self.wrapEl = el; },
+canvas: function (el) { self.canvasEl = el; },
+fb: function (el) { self.fbEl = el; },
+ring: function (el) { self.ringEl = el; },
+steam: function (el) { self.steamEl = el; },
+l0: function (el) { self.l0 = el; },
+l1: function (el) { self.l1 = el; },
+l2: function (el) { self.l2 = el; }
+};
+this._onMove = function (e) {
+if (e.pointerType === 'touch' || e.pointerType === 'pen') return;
+var el = self.wrapEl || e.currentTarget;
+var r = el.getBoundingClientRect();
+var nx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+var ny = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+self.tgt = { x: Math.max(-1, Math.min(1, nx)), y: Math.max(-1, Math.min(1, ny)) };
+self.hover = true;
+};
+this._onLeave = function () { self.tgt = { x: 0, y: 0 }; self.hover = false; };
+this._pick = function (i) { var n = performance.now(); self.want = i; self.lastPick = n; self.holdUntil = n + 9000; };
+this._onDown = function (e) { self._dx = e.clientX; self._dy = e.clientY; };
+this._onUp = function (e) {
+if (self._dx == null) return;
+var dx = e.clientX - self._dx, dy = e.clientY - self._dy; self._dx = null;
+if (Math.abs(dy) > 60 && Math.abs(dy) > Math.abs(dx)) return;
+var cur = self.want || 0;
+self._pick(dx < -40 ? (cur + 2) % 3 : (cur + 1) % 3);
+};
+}
+return {
+hasNotice: !!nz, noticeText: nz ? nz[0] : '', noticeStyle: nz ? 'display: flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 16px; text-align: center; font-size: 14px; font-weight: 700; background: ' + nz[1] + '; color: ' + nz[2] : '',
+accent: this.props.accent ?? '#D99A35',
+rootClass: motion ? 'pb' : 'pb still',
+wrapRef: this._refs.wrap,
+canvasRef: this._refs.canvas,
+fbRef: this._refs.fb,
+ringRef: this._refs.ring,
+steamRef: this._refs.steam,
+l0Ref: this._refs.l0,
+l1Ref: this._refs.l1,
+l2Ref: this._refs.l2,
+onMove: this._onMove,
+onLeave: this._onLeave,
+onDown: this._onDown, onUp: this._onUp,
+pick0: function () { self._pick(0); }, pick1: function () { self._pick(1); }, pick2: function () { self._pick(2); }
+};
+}
+}
+</script>
+<script src="js/morphdom.min.js"></script>
+<script src="js/dc-lite.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your cart – Purbeli</title>
+<meta name="description" content="Purbeli – Flavour on Wheels. Nepalese momo, chowmein, laphing, chatpate and more at 33 Glenroy Road, Glenroy VIC. Order online for pickup.">
+<link rel="icon" href="img/purbeli-logo-cream.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#140C0B}
+a{color:#F3E7DC}a:hover{color:#D99A35}
+.mn *{box-sizing:border-box}
+.mn button{font:inherit}
+.mn button:focus-visible,.mn a:focus-visible{outline:2px solid #D99A35;outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="dc-template">
+
+<div class="mn" style="background: #140C0B; color: #F3E7DC; font-family: Manrope, system-ui, sans-serif; font-size: 15px; line-height: 1.55; min-height: 100vh">
+
+<header style="background: #140C0B; border-bottom: 1px solid #2A1916">
+<div style="max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="index.html" aria-label="Purbeli home" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<img src="img/purbeli-logo-cream.png" alt="Purbeli logo" style="display: block; width: 64px; height: 55px; object-fit: contain">
+<span style="display: flex; flex-direction: column; line-height: 1.2">
+<span style="font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #BFA99B">Flavour on Wheels</span>
+<span style="font-family: 'Playfair Display', serif; font-size: 20px">Purbeli</span>
+</span>
+</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px; font-size: 14px; font-weight: 500">
+<a href="index.html" style="text-decoration: none">Home</a>
+<a href="menu.html" style="text-decoration: none">Menu</a>
+<a href="order.html" style="text-decoration: none">My order</a>
+<a href="cart.html" aria-current="page" aria-label="{{cartLabel}}" style="position: relative; display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: #D99A35; color: #1A0F0D; text-decoration: none">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"></path><circle cx="10" cy="20" r="1.4"></circle><circle cx="17" cy="20" r="1.4"></circle></svg>
+<span style="position: absolute; top: -4px; right: -4px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: #8E2B27; color: #FFF8EF; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 2px solid #140C0B">{{count}}</span>
+</a>
+</nav>
+</div>
+</header>
+
+<div style="max-width: 1180px; margin: 0 auto; padding: 24px 24px 80px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; align-items: center; gap: 14px">
+<a href="menu.html" aria-label="Back to menu" style="width: 44px; height: 44px; border-radius: 50%; background: #1E1210; border: 1px solid #3A211D; display: flex; align-items: center; justify-content: center; text-decoration: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></a>
+<h1 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 36px">Your <em style="color: #E07A6A">cart</em></h1>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px">
+<section aria-label="Items" style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<div style="padding: 48px 24px; border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px">
+<p style="margin: 0; color: #BFA99B">Your cart is empty.</p>
+<a href="menu.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 24px; border-radius: 999px; background: #9E2F2A; color: #FFF8EF; text-decoration: none; font-weight: 600">Browse the menu</a>
+</div>
+</sc-if>
+<sc-for list="{{lines}}" as="ln" hint-placeholder-count="3">
+<article style="display: flex; align-items: stretch; border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17; overflow: hidden">
+<div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 16px; padding: 14px 16px">
+<sc-if value="{{ln.hasImg}}" hint-placeholder-val="{{true}}"><img src="{{ln.img}}" alt="" style="display: block; width: 88px; height: 88px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 8px 10px rgba(0,0,0,.5))"></sc-if>
+<sc-if value="{{ln.noImg}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="width: 88px; height: 88px; border-radius: 50%; background: #2A1916; border: 2px dashed #6B3A33; flex: 0 0 auto"></span></sc-if>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: .02em">{{ln.name}}</h2>
+<sc-if value="{{ln.hasOpt}}" hint-placeholder-val="{{true}}"><span style="font-size: 13px; color: #BFA99B">{{ln.opt}}</span></sc-if>
+<sc-if value="{{ln.hasNote}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; color: #9C8678">Note: {{ln.note}}</span></sc-if>
+<span style="font-size: 14px; font-weight: 700; color: #D99A35">{{ln.lineTotal}} <span style="font-weight: 500; color: #9C8678">· {{ln.unitText}} each</span></span>
+<div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 4px; margin-top: 4px; padding: 3px; border-radius: 999px; background: #2A1916">
+<button type="button" onClick="{{ln.dec}}" aria-label="{{ln.decLabel}}" style="width: 34px; height: 34px; border-radius: 50%; border: 0; background: #3A211D; color: #F3E7DC; font-size: 17px; font-weight: 700; cursor: pointer">−</button>
+<span aria-live="polite" style="min-width: 28px; text-align: center; font-weight: 700">{{ln.qty}}</span>
+<button type="button" onClick="{{ln.inc}}" aria-label="{{ln.incLabel}}" style="width: 34px; height: 34px; border-radius: 50%; border: 0; background: #D99A35; color: #1A0F0D; font-size: 17px; font-weight: 700; cursor: pointer">+</button>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; width: 56px; flex: 0 0 auto">
+<button type="button" onClick="{{ln.remove}}" aria-label="{{ln.removeLabel}}" style="flex: 1; border: 0; background: #9E2F2A; color: #FFF8EF; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></button>
+<a href="menu.html" aria-label="{{ln.editLabel}}" style="flex: 1; background: #2A1916; color: #F3E7DC; display: flex; align-items: center; justify-content: center; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"></path></svg></a>
+</div>
+</article>
+</sc-for>
+<a href="menu.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px dashed #6B3A33; text-decoration: none; color: #D99A35; font-weight: 600">+ Add more dishes</a>
+</section>
+
+<aside aria-label="Order details" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17; padding: 22px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0 0 4px; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 400">Order details</h2>
+<div style="display: flex; justify-content: space-between; color: #BFA99B"><span>Items</span><span>{{count}}</span></div>
+<div style="display: flex; justify-content: space-between; color: #BFA99B"><span>Subtotal</span><span>{{subtotal}}</span></div>
+<div style="display: flex; justify-content: space-between; color: #BFA99B"><span>Pickup</span><span>Free</span></div>
+<div style="display: flex; justify-content: space-between; padding-top: 10px; margin-top: 4px; border-top: 1px solid #3A211D; font-weight: 800; font-size: 17px"><span>Total</span><span>{{total}} AUD</span></div>
+</div>
+<div style="border-radius: 20px; background: #2A1916; border: 1px solid #3A211D; padding: 16px 18px; display: flex; gap: 12px; font-size: 14px; color: #CDB8AA">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D99A35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 1px"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+<span>Pickup only from 33 Glenroy Road, Glenroy. Pay by card online or cash at pickup.</span>
+</div>
+<div style="border-radius: 20px; background: #1E1210; border: 1px solid #2E1B17; padding: 14px 14px 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: flex; flex-direction: column; line-height: 1.2"><span style="font-size: 12px; color: #BFA99B">Total</span><strong style="font-size: 22px">{{total}}</strong></span>
+<a href="checkout.html" style="flex: 1; max-width: 200px; display: inline-flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 14px; background: #9E2F2A; color: #FFF8EF; text-decoration: none; font-weight: 700">Checkout</a>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</template>
+<script type="text/x-dc" id="dc-script" data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var st = this.state || {};
+var fmt = function (n) { return '$' + n.toFixed(2); };
+var base = [
+{ id: 'mo', name: 'Momo', img: 'img/cut-momo.webp', opt: 'Chicken · Steamed', note: '', price: 14.99 },
+{ id: 'pp', name: 'Pani Puri', img: 'img/plate-hq.webp', opt: '', note: 'Extra pani on the side', price: 9.99 },
+{ id: 'ac', name: 'Aalu Chop', img: 'img/aloo-plate.webp', opt: '', note: '', price: 8.99 },
+{ id: 'kn', name: 'Keema Noodles', img: 'img/noodle-plate.webp', opt: 'Chicken', note: '', price: 14.99 }
+];
+var qty = st.qty || { mo: 2, pp: 1, ac: 1, kn: 1 };
+var set = function (id, n) { var nq = Object.assign({}, qty); nq[id] = Math.max(0, n); self.setState({ qty: nq }); };
+var lines = base.filter(function (b) { return qty[b.id] > 0; }).map(function (b) {
+var n = qty[b.id];
+return {
+name: b.name, img: b.img, hasImg: !!b.img, noImg: !b.img, opt: b.opt, hasOpt: !!b.opt, note: b.note, hasNote: !!b.note, qty: n, lineTotal: fmt(b.price * n), unitText: fmt(b.price),
+inc: function () { set(b.id, n + 1); }, dec: function () { set(b.id, n - 1); }, remove: function () { set(b.id, 0); },
+incLabel: 'One more ' + b.name, decLabel: 'One less ' + b.name, removeLabel: 'Remove ' + b.name, editLabel: 'Edit ' + b.name
+};
+});
+var count = lines.reduce(function (s, l) { return s + l.qty; }, 0);
+var sub = base.reduce(function (s, b) { return s + (qty[b.id] || 0) * b.price; }, 0);
+return { lines: lines, count: count, empty: lines.length === 0, cartLabel: 'Cart, ' + count + ' items', subtotal: fmt(sub), total: fmt(sub) };
+}
+}
+</script>
+<script src="js/morphdom.min.js"></script>
+<script src="js/dc-lite.js"></script>
+</body>
+</html>
